@@ -9,7 +9,7 @@
 1. Download **`Lunite.exe`** from **[Releases](https://github.com/lpatino7/lunite/releases/latest)** (under *Assets*). There is no zip and no installer — the app is one portable exe.
 2. **Windows 10/11 PCs only** — open the link on your PC, not your phone. Save it anywhere; the Desktop is fine.
 3. Run it. Windows will show a blue SmartScreen warning — click **More info → Run anyway**.
-4. Click **RUN CHECK-UP**. The scan is read-only — nothing on your PC changes.
+4. Click **RUN CHECK-UP**. The check-up itself is read-only: it changes nothing on your PC. Changes happen only later, on the FIX screen, one tick at a time, and every one of them has its own UNDO.
 
 You don't need administrator access. Three measurements — memory speed, drive speed, startup time — come from Windows' built-in benchmark and do need it; the report says when they were skipped and why, and offers a restart-with-access button.
 
@@ -68,7 +68,10 @@ The app does make a small number of outbound calls, and it is worth naming all o
 4. **One proof that a new name server answers** — only if you approve that change. If it can't answer, your old setting goes straight back.
 5. **The connection load test** — only when you tick its consent before a check-up. It downloads about 50 MB from Cloudflare's public speed test, times it, and throws the data away.
 
-That's the whole list. The shareable report copy masks your router's addresses; crash notes mask your user folder name.
+6. **The program-updates listing, during every check-up** — Windows' own package manager (winget) is asked, read-only, which of your installed programs have a newer version. To answer, winget fetches its public catalog from Microsoft. winget is Microsoft's program, not ours, and follows your Windows diagnostic-data setting.
+7. **Eight small pings to your own router, during every check-up** — to read how quickly the path to it answers. They stay inside your home network.
+
+That is the complete list, and it is the same list the app shows on its About screen. The shareable report copy masks your router's addresses; crash notes mask your user folder name.
 
 ## Updates
 
