@@ -1,5 +1,7 @@
 # LUNITE
 
+Questions, a confusing screen, a report that looks wrong: luniteapp@gmail.com. Or open SETTINGS > SEND A REPORT inside the app.
+
 **An honest PC check-up for Windows.** Lunite reads your machine's real settings and hardware, scores only what it actually verified, and says plainly what it could not read. It changes nothing without a yes, and every change the app itself applies is reversible with one button.
 
 > **Certus is now Lunite.** Same app, same records, same checks — the old name was shared with several other software companies, so people searching for us found them instead. Copies already installed keep updating through the same signed channel; the old address still reaches us. Older releases below still carry the Certus name, because that is who published them.
@@ -27,7 +29,7 @@ Every release publishes the SHA-256 of its exe in the release notes. To check yo
 Get-FileHash .\Lunite.exe -Algorithm SHA256
 ```
 
-Compare it to the hash in the [release notes](https://github.com/lpatino7/lunite/releases/latest). If they differ, don't run it — tell me.
+Compare it to the hash in the [release notes](https://github.com/lpatino7/lunite/releases/latest). If they differ, don't run it — email luniteapp@gmail.com.
 
 ## What a check-up covers
 
@@ -58,29 +60,30 @@ Any finding can be marked **"I know about this."** It stops counting against you
 
 ## Privacy
 
-**Your reports stay on your PC. Nothing is uploaded, ever.** No server, no account, no telemetry, no analytics, no crash reporting. Your files, settings, hardware details and scores are not sent anywhere — a report card only ever leaves this machine if you send it yourself.
+**Your reports stay on your PC. Nothing is uploaded unless you press SEND on the SEND A REPORT screen in SETTINGS.** No account, no telemetry, no analytics, no automatic crash reporting. Your files, settings, hardware details and scores are not sent anywhere on their own — a report card only ever leaves this machine if you send it yourself.
 
 The app does make a small number of outbound calls, and it is worth naming all of them rather than claiming there are none. The complete list, also shown on the app's About screen:
 
-1. **The update check** — when you press CHECK FOR UPDATES, or once at launch if you tick that box. It asks the channel what the newest version is.
+1. **The update check** — when you press CHECK FOR UPDATES on SETTINGS, or once at launch if you tick the box there. It asks the channel what the newest version is. If there is a newer one, it downloads it and checks it, then asks you before installing anything.
 2. **Name-server timing, during every check-up** — the same three names (`example.com`, `microsoft.com`, `wikipedia.org`) are asked of your own name server and of two public ones (Cloudflare and Google), to see which answers fastest. Nothing of yours is in the question.
 3. **Name-server timing again, if you press FIX** — only when a faster name server is on the plan, and on a fresh set of everyday names, because re-using the first three would hand your router a race it had just warmed its cache for.
 4. **One proof that a new name server answers** — only if you approve that change. If it can't answer, your old setting goes straight back.
-5. **The connection load test** — only when you tick its consent before a check-up. It downloads about 50 MB from Cloudflare's public speed test, times it, and throws the data away.
+5. **The connection load test** — only when you tick its consent before a check-up. It downloads from Cloudflare's public speed test at full speed for about six to eight seconds, pings Cloudflare (1.1.1.1) about twenty times to measure how much your lag rises, and throws the data away. How much data that pulls depends on how fast your line is — roughly 1 MB for every 1 Mbps, so about 100 MB on a 100 Mbps line and close to 1 GB on gigabit.
 
-6. **The program-updates listing, during every check-up** — Windows' own package manager (winget) is asked, read-only, which of your installed programs have a newer version. To answer, winget fetches its public catalog from Microsoft. winget is Microsoft's program, not ours, and follows your Windows diagnostic-data setting.
-7. **Eight small pings to your own router, during every check-up** — to read how quickly the path to it answers. They stay inside your home network.
+6. **The program-updates listing, during every check-up** — Windows' own package manager (winget) is asked, read-only, which of your installed programs have a newer version. To answer, winget fetches its public catalog from Microsoft. winget is Microsoft's program, not ours — depending on your Windows diagnostic-data setting, it may send Microsoft its own usage data.
+7. **About a dozen small pings to your own router, during every check-up** — to read how quickly the path to it answers. They go to your router (your PC's gateway) and no further.
+8. **Send a report** — only when you press SEND on the SEND A REPORT screen in SETTINGS. It sends your report card with this PC's name replaced by a short code (the same code each time you send from this PC), the app and Windows versions, the newest crash note if there is one, the time you sent it, and whatever you typed, to luniteapp@gmail.com. The screen lists all of it and can open the exact card for you to read before you press SEND, and nothing goes on its own.
 
 That is the complete list, and it is the same list the app shows on its About screen. The shareable report copy masks your router's addresses; crash notes mask your user folder name.
 
 ## Updates
 
-**CHECK FOR UPDATES** lives on the About screen. A new build installs only after passing two gates: its SHA-256 checksum matches the published manifest, and its RSA signature verifies against the maker's key — a tampered or rehosted file cannot pass. The old build stays beside the new one as a fallback, and an interrupted update puts the original back exactly as it was.
+**CHECK FOR UPDATES** lives on the SETTINGS screen. A new build installs only after passing two gates: its SHA-256 checksum matches the published manifest, and its RSA signature verifies against the maker's key — a tampered or rehosted file cannot pass. If the swap fails, the app puts your old build back, and the old build is also kept beside the new one as a fallback.
 
 ## Status
 
-Free testing preview, under active development. Every release lists its SHA-256 checksum. If something confused you, that's a finding — say it.
+Under active development. Every release lists its SHA-256 checksum. If something confused you, that's a finding — email luniteapp@gmail.com or use SETTINGS > SEND A REPORT.
 
 ---
 
-© 2026 Luis. All rights reserved. This is a free testing preview; the binaries may not be redistributed, modified, or rehosted without permission.
+© 2026 Luis. All rights reserved. The binaries may not be redistributed, modified, or rehosted without permission.
