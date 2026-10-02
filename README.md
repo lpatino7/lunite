@@ -6,6 +6,8 @@ Questions, a confusing screen, a report that looks wrong: luniteapp@gmail.com. O
 
 > **Certus is now Lunite.** Same app, same records, same checks — the old name was shared with several other software companies, so people searching for us found them instead. Copies already installed keep updating through the same signed channel; the old address still reaches us. Older releases below still carry the Certus name, because that is who published them.
 
+Free to use. A paid license for the one-click fixes is planned and not on sale yet — see [Free, paid, and refunds](#free-paid-and-refunds).
+
 ## Download and run
 
 1. Download **`Lunite.exe`** from **[Releases](https://github.com/lpatino7/lunite/releases/latest)** (under *Assets*). There is no zip and no installer — the app is one portable exe.
@@ -38,7 +40,7 @@ Roughly two dozen verified checks, reported in plain words:
 - **Settings that cost you performance** — power plan, monitor refresh rate, mouse acceleration, background game recording, startup load (including programs set to start twice), screen sleep, network adapter power saving, graphics driver age.
 - **Hardware truths** — RAM running below the speed the sticks themselves report as their rating, single-channel memory, old motherboard firmware, drive health and real free space, fast USB devices linked below their tier, damaged-cable tells on wired links (only after the adapter itself is verified capable of more).
 - **Factory-installed extras** — trialware, adware, and fake "speed-up" tools, named exactly. Manufacturer utilities (fan control, RGB) are listed, never accused, and your active antivirus can never be called bloat, whatever the brand.
-- **Health first** — antivirus state, drive health warnings, the CPU speed-limit log (the quiet slowdowns firmware applies when a machine runs hot), unexpected power-loss history. Protect-before-optimize items never sell you a one-click fix.
+- **Health first** — antivirus state, drive health warnings, the CPU speed-limit log (the quiet slowdowns firmware applies when a machine runs hot), unexpected power-loss history. Protect-before-optimize items never offer you a one-click fix.
 - **Network reality** — double-router paths, who answers your DNS lookups, measured round-trip time to your router.
 - **Sound** — the default microphone pick (Windows loves to quietly switch you back to a webcam mic).
 
@@ -53,6 +55,22 @@ Three scores — Gaming, Media, Work — plus an overall, computed only from che
 The report separates what the app can fix with one click from what needs guided steps or a screwdriver. For one-click fixes: each one is listed with its own consent tick before anything runs, every applied change records its exact before-value, and the **WHAT CHANGED** screen lists every change with its own UNDO button. Guided and hardware items (BIOS settings, cables, dust) are explained step by step — the app never touches those itself.
 
 **Removing unwanted programs is different, and it is walled off from the rest.** It lives in its own room, behind its own separate consent tick, and it says so plainly: **this one cannot be undone.** When you approve a removal, the app runs that program's *own* uninstaller — the vendor's window and any prompts it raises are theirs, stay visible, and are yours to answer. Say no in that window and nothing is removed. Afterwards the app re-checks whether the program's entry is actually gone and tells you either way, including when it can't tell the difference between "you declined" and "it wants a reboot."
+
+## Free, paid, and refunds
+
+**Lunite is free to download and use.** The check-up, every score, every explanation, the full report and its written how-to steps cost nothing, and that stays true. As of v0.75.0 the one-click fixes are free too: the app has no paywall, no license screen and no buy button. The one-click fixes are the one part planned to change.
+
+**What is planned.** A paid license, **$19.99 in US dollars, paid once** (not a subscription, plus any sales tax or VAT the checkout adds where you live), that lets the app *apply* the one-click fixes for you instead of you following the steps by hand. They would work the way they work now: a consent tick for each one, and an UNDO for each one. UNDO and the WHAT CHANGED screen will keep working with or without a license, including after a refund, so none of the one-click fixes is ever locked in. Removing programs is separate and is the one thing that cannot be undone, as explained above. The plan is that your first one-click fix is free, so you can watch the app do it on your own PC, and undo it, before you pay anything. What exactly a license covers (how many PCs, which versions) will be written here before it goes on sale.
+
+**It is not on sale yet.** There is nothing to buy today. When it goes on sale, this section will say so, link to the checkout, and say what appears on your card statement. The version of the app that adds the license will say so in its release notes, and updates only install after you say yes.
+
+**How the key will reach you.** The plan is that your license key is emailed to you automatically, usually within minutes of your payment going through. It is made for the email address you bought with, and the app checks it on your PC without contacting anyone. If it has not arrived after an hour, check your spam folder, then email me and I will send it again or refund you in full, even if that is after the 30 days.
+
+**Refunds: 30 days.** The one-click fixes all have an UNDO, and so does the purchase. Ask within 30 days of buying and I will refund you in full. You do not need a reason. Email **luniteapp@gmail.com**, say you want a refund, and tell me the email address you bought with. I aim to answer within a few days. The money goes back the way you paid and can take 5 to 10 business days to show on your statement. Stripe is the seller on your receipt, so its terms and your local consumer rights apply as well.
+
+**What a refund does to your key.** A refund ends your license. Because the app checks keys on your PC without contacting anyone, it cannot switch a refunded key off, so I am trusting you to stop using it. I would rather trust you than build a check that phones home. The same goes for sharing: I cannot stop a shared key from working, so I am asking you not to.
+
+**Who you are buying from.** Lunite is made by one person, Luis, a sole proprietor in Texas, USA, not a company. The sale itself will be handled by Stripe, which acts as the seller on your receipt; the key and support come from me. I use your email address to send your key and to answer you. I do not sell it, and the only others who handle it are Stripe (at checkout) and my email service (which carries our messages). Your key contains your email address, so do not post it publicly. Your payment details go to Stripe's checkout, never to me or to the app.
 
 ## Your rulings
 
