@@ -1,109 +1,176 @@
 # LUNITE
 
-Questions, a confusing screen, a report that looks wrong: luniteapp@gmail.com. Or open SETTINGS > SEND A REPORT inside the app.
+Questions, a confusing screen, a report that looks wrong: **luniteapp@gmail.com**. Or open SETTINGS > SEND A REPORT inside the app.
 
-**An honest PC check-up for Windows.** Lunite reads your machine's real settings and hardware, scores only what it actually verified, and says plainly what it could not read. It changes nothing without a yes, and every setting the app itself changes is reversible with one button. The one thing that is not, removing a program, is walled off and marked permanent.
+**An honest PC check-up for Windows.** Lunite reads your PC's real settings and hardware, scores only what it actually verified, and says plainly what it could not read. It changes nothing without your yes, and every fix it applies has its own UNDO. Three things cannot be undone: removing a program and clearing Windows' leftover folders (both in their own room, marked permanent), and DELETE MY RECORDS in SETTINGS, which erases your saved check-ups and report cards for good but leaves the undo record, so fixes you applied can still be undone.
 
-> **Certus is now Lunite.** Same app, same records, same checks — the old name was shared with several other software companies, so people searching for us found them instead. Copies already installed keep updating through the same signed channel; the old address still reaches us. Older releases below still carry the Certus name, because that is who published them.
+Lunite is free to use today ([what will change later](#is-it-really-free)).
 
-Free to use. A paid license for the one-click fixes is planned and not on sale yet — see [Free, paid, and refunds](#free-paid-and-refunds).
+> **Certus is now Lunite.** Same app, same records, same checks. Older releases on the Releases page may carry the earlier name, Certus. Releases before v0.83.0 are not signed, so download the newest one.
+
+## What it looks like
+
+![Home: your scores, health alerts and every check shown on a drawing of the PC](images/lunite-home.png)
+
+![The report card: the overall score, the HEALTH lamp and the three scores by use](images/lunite-report.png)
+
+*Pictures from a made-up demo PC ("DEMO-RIG-01"), not a real person's computer.*
+
+## What you need
+
+- A Windows 10 or Windows 11 PC. Open the download link on the PC, not on your phone.
+- No installer, and administrator access is optional. Lunite is one portable file, `Lunite.exe`.
+- An internet connection only for the few things listed under [Privacy](#privacy). The check-up itself works without one.
 
 ## Download and run
 
-1. Download **`Lunite.exe`** from **[Releases](https://github.com/lpatino7/lunite/releases/latest)** (under *Assets*). There is no zip and no installer — the app is one portable exe.
-2. **Windows 10/11 PCs only** — open the link on your PC, not your phone. Save it anywhere; the Desktop is fine.
-3. Run it. Windows will show a blue SmartScreen warning — click **More info → Run anyway**.
-4. Click **RUN CHECK-UP**. The check-up itself is read-only: it changes nothing on your PC. Changes happen only later, on the FIX screen, where every fix has its own tick box (the safe, instantly undoable ones start ticked, so untick any you do not want), and every setting change has its own UNDO. Removing a program, in its own room, is the one exception and is marked permanent.
+1. Download **`Lunite.exe`** from **[Releases](https://github.com/lpatino7/lunite/releases/latest)** (under *Assets*). Save it in a folder of its own, because Lunite keeps its results and report cards beside it.
+2. Run it. The first time, Lunite shows a short version of its terms before the app opens (they stay in ABOUT, under TERMS AND NAMES). The full terms, which also cover sharing the app and how a sent report is kept, are in [LICENSE](LICENSE). By running Lunite you agree to the full LICENSE, including the parts the first-run screen leaves out.
+3. Click **RUN CHECK-UP**. The check-up is read-only: it changes no settings on your PC, and saves only its own files (results, report cards and its own working records).
+4. Changes happen only later, on the FIX screen. Every fix has its own tick box, and a fix arrives ticked only when your check-up found a real problem for it and it undoes in one tap. Untick anything you don't want.
 
-You don't need administrator access. Three measurements — memory speed, drive speed, startup time — come from Windows' built-in benchmark and do need it; the report says when they were skipped and why, and offers a restart-with-access button.
+Three measurements (memory speed, drive speed, startup time) come from Windows' built-in benchmark and need administrator access. The report says when they were skipped and why, and on an administrator account it offers a restart-with-access button.
 
-### About that SmartScreen warning
+### The first time you run it
 
-It is Windows being properly cautious, and it will happen. The app is not code-signed yet, so Windows has no publisher name to show you and no download history to judge it by. The rename reset what little reputation the old name had earned, so expect the warning to stick around for a while. A signing certificate is on the roadmap.
+- **Lunite is signed.** Windows shows the publisher as **Luis Patino**. To see it yourself: right-click `Lunite.exe` > Properties > Digital Signatures.
+- **Windows usually asks for administrator access each time Lunite starts,** if your Windows account is an administrator (most home PCs). The prompt should name **Luis Patino** as the verified publisher. **Yes** lets the check-up read a few more things, and the check-up still only reads. **No** still opens Lunite, and those few checks are marked "needs administrator access" instead of being guessed.
+- **SmartScreen may still warn for a while.** A signed app with a new file can still get the blue "Windows protected your PC" screen until the file builds a download history with Microsoft. If you see it:
+  1. Click **More info**.
+  2. Check the **Publisher** line. It must say **Luis Patino**. If it says "Unknown publisher" or any other name, close the window, don't run the file, delete it, and email luniteapp@gmail.com.
+  3. If it says Luis Patino, click **Run anyway**.
+- **Your browser** (Edge, Chrome) may say the file "isn't commonly downloaded". That is the same reason. In the browser's downloads list choose **Keep** (you may need **Show more** > **Keep anyway**), then check the publisher as above.
+- **Smart App Control** (Windows 11): if yours is turned on, it should let Lunite open, because the file is signed. The check-up hasn't been tested with it turned on, so some checks may come back unread. If it blocks Lunite or the check-up looks wrong, email luniteapp@gmail.com.
+- **You will see `powershell.exe` running.** `Lunite.exe` carries PowerShell scripts that do the reading and the fixes. It writes them to a folder and runs them with no window and with `-ExecutionPolicy Bypass`, so a sandbox or antivirus report may call that suspicious. Without administrator access, the folder is under `%LOCALAPPDATA%\PCOptimizer`. With it, the folder is an admin-only one in `C:\Windows\Temp`, so programs without administrator rights can't change the scripts.
 
-That warning means *"I don't know who made this"* — not *"I found something bad."* If that distinction isn't enough for you, don't run it. That's a reasonable call, and the next section is there so you don't have to take anyone's word for it.
+<!-- Sources, read 2026-11-03: https://support.microsoft.com/en-us/topic/what-is-smart-app-control-285ea03d-fa88-4d56-882e-6698afdb7003
+(a valid signature lets an app run) and https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/code-signing-options
+(Artifact Signing gives no instant SmartScreen trust; new files can warn until they build reputation). -->
 
-### Verify what you downloaded
+If none of that is enough for you, don't run it. That's a reasonable call, and the next section is there so you don't have to take anyone's word for it.
 
-Every release publishes the SHA-256 of its exe in the release notes. To check yours matches, in PowerShell:
+### Check what you downloaded
+
+Every release lists the SHA-256 of its exe in the release notes. Open the folder where you saved it, click the address bar, type `powershell` and press Enter. Then run:
 
 ```
 Get-FileHash .\Lunite.exe -Algorithm SHA256
+(Get-AuthenticodeSignature .\Lunite.exe).Status
+(Get-AuthenticodeSignature .\Lunite.exe).SignerCertificate.GetNameInfo('SimpleName',$false)
 ```
 
-Compare it to the hash in the [release notes](https://github.com/lpatino7/lunite/releases/latest). If they differ, don't run it — email luniteapp@gmail.com.
+The hash must match the one in the [release notes](https://github.com/lpatino7/lunite/releases/latest). The second line must say `Valid`, and the third must say `Luis Patino`. If any of them is off, don't run it: email luniteapp@gmail.com.
 
 ## What a check-up covers
 
-Roughly two dozen verified checks, reported in plain words:
+Over forty checks (the exact number depends on your PC: a laptop adds battery checks, a desktop adds board checks), in plain words:
 
-- **Settings that cost you performance** — power plan, monitor refresh rate, mouse acceleration, background game recording, startup load (including programs set to start twice), screen sleep, network adapter power saving, graphics driver age.
-- **Hardware truths** — RAM running below the speed the sticks themselves report as their rating, single-channel memory, old motherboard firmware, drive health and real free space, fast USB devices linked below their tier, damaged-cable tells on wired links (only after the adapter itself is verified capable of more).
-- **Factory-installed extras** — trialware, adware, and fake "speed-up" tools, named exactly. Manufacturer utilities (fan control, RGB) are listed, never accused, and your active antivirus can never be called bloat, whatever the brand.
-- **Health first** — antivirus state, drive health warnings, the CPU speed-limit log (the quiet slowdowns firmware applies when a machine runs hot), unexpected power-loss history. Protect-before-optimize items never offer you a one-click fix.
-- **Network reality** — double-router paths, who answers your DNS lookups, measured round-trip time to your router.
-- **Sound** — the default microphone pick (Windows loves to quietly switch you back to a webcam mic).
+- **Health first:** blue screens (each crash Windows recorded, with the stop code it wrote down), graphics driver restarts, low memory and how the page file is set, devices Device Manager shows a problem on, the disk error log, drive health warnings, antivirus state, the CPU speed-limit log, unexpected power-loss history, and Windows 10 support dates. Red findings are **health alerts**: they light a red lamp beside your score and are listed first. They never get a one-click fix.
+- **Settings that cost you performance:** power plan, monitor refresh rate, mouse acceleration, background game recording, startup load, screen sleep, network adapter power saving, graphics driver age.
+- **Hardware truths:** memory running below its rated speed, single-channel memory, old motherboard firmware, drive health and real free space, fast USB devices linked below their speed, damaged-cable tells on wired links, power settings that hold the processor back, Secure Boot and TPM (which some games' anti-cheat needs).
+- **Extra programs at startup:** programs that start themselves with Windows, from the check-up's short list (an extra security suite beside Windows Security, cleaner and driver-updater tools, preinstalled offers and search add-ons). Each one is described by what kind of program it is. Your PC maker's own drivers and tools are never counted as extras, and neither is Windows Security.
+- **Network:** double-router paths, who answers your name lookups, how quickly your router answers, and, only if you tick it, how your ping holds up while the line is busy.
+- **Sound:** the default microphone pick.
 
-Every check ends one of three ways: verified on this machine, flagged with the evidence, or honestly marked *could not read*. Unreadable checks are excluded from the scoring math and listed — never guessed.
+Every check ends one of a few honest ways: read and fine, flagged with the evidence, not judged, or marked *could not read* (and why, such as needing administrator access). A check that could not be read is left out of the score and listed. It is never guessed.
 
 ## Scores
 
-Three scores — Gaming, Media, Work — plus an overall, computed only from checks that were actually read on your machine. The report states what the number was computed from, including what it failed to read. Measured numbers come with verdicts judged against your actual hardware's class, not a generic ideal.
+Three scores (Gaming, Media, Work) plus an overall, computed only from checks that were actually read on your PC. Some checks are advice rather than problems and cost no points. The report says what each number was built from, including what could not be read. Health alerts are not part of the score, which is why they get their own red lamp.
 
-## Fixes — and the undo rule
+## Fixes and undo
 
-The report separates what the app can fix with one click from what needs guided steps or a screwdriver. For one-click fixes: each one is listed with its own consent tick before anything runs, every applied change records its exact before-value, and the **WHAT CHANGED** screen lists every change with its own UNDO button. Guided and hardware items (BIOS settings, cables, dust) are explained step by step — the app never touches those itself.
+The report separates what the app can fix with one click from what needs guided steps or your own hands. For one-click fixes, each one has its own tick box before anything runs, every applied change records its exact before-value, and the **WHAT CHANGED** screen lists every change with its own UNDO button. If a setting has moved on since, or the undo record could not be saved, it says so instead. Guided and hardware items (BIOS settings, cables, dust) are explained step by step; the app never touches those itself.
 
-**Removing unwanted programs is different, and it is walled off from the rest.** It lives in its own room, behind its own separate consent tick, and it says so plainly: **this one cannot be undone.** When you approve a removal, the app runs that program's *own* uninstaller — the vendor's window and any prompts it raises are theirs, stay visible, and are yours to answer. Say no in that window and nothing is removed. Afterwards the app re-checks whether the program's entry is actually gone and tells you either way, including when it can't tell the difference between "you declined" and "it wants a reboot."
+**Removals are walled off.** Removing a program and clearing Windows' leftover folders live in their own room, behind their own consent, and the room says plainly that a removal cannot be undone. When you approve a program's removal, the app runs that program's *own* uninstaller, whose window and prompts are yours to answer. Afterwards the app checks whether the program is actually gone and tells you either way.
 
-## Free, paid, and refunds
-
-**Lunite is free to download and use.** The check-up, every score, every explanation, the full report and its written how-to steps cost nothing, and that stays true. Today the one-click fixes are free too, only because the license is not on sale yet: the app has no paywall, no license screen and no buy button. The plan below is the one thing that will change, and only for the one-click fixes.
-
-**What is planned.** A paid license, **$19.99 in US dollars, paid once**, not a subscription, that lets the app *apply* the one-click fixes for you instead of you making the changes by hand. Once it is on sale, the app will apply one-click fixes only with a license. There is no free trial fix, and the written how-to steps stay free. They would work the way they work now: a tick box for each one, and an UNDO for each one. UNDO and the WHAT CHANGED screen will keep working with or without a license, including after a refund, so none of the one-click fixes is ever locked in. Removing programs is separate. It is the one thing that cannot be undone (see above), and it stays free. Depending on where you live, the checkout may add sales tax or VAT, and it may show the price in your local currency. Checkout is not offered in every country.
-
-**What a license covers.** One license covers one person, on the PCs they own or use themselves. The app does not count machines and has no activation limit: on each PC, you paste the same key. It stays valid for every future version of Lunite, so you never pay again when the app updates. The key works offline, so the app never contacts anyone to accept it. It does not cover other people's PCs, such as friends' or clients', and it does not give anyone the right to redistribute the app. A license lets the app apply fixes for you. Lunite is provided as is: every setting it changes has an UNDO, but it does not promise any particular speed-up, because results depend on your PC.
-
-**It is not on sale yet.** There is nothing to buy today. When it goes on sale, this section will say so and link to the checkout. The version of the app that adds the license will say so in its release notes, and updates only install after you say yes.
-
-**How the key will reach you.** The plan is that your license key is emailed to you automatically from luniteapp@gmail.com, with the subject “Your Lunite license key”, usually within minutes of your payment going through. It is made for the email address you bought with, and the app checks it on your PC without contacting anyone. You will need the version of Lunite that adds the license: CHECK FOR UPDATES on SETTINGS gets it. If your payment method takes days to clear, the key is sent as soon as it does. Not there after 10 minutes? Check your spam folder. Still nothing after an hour? Email me and I will send it again or refund you in full, even if that is after the 30 days.
-
-**Refunds: 30 days.** The one-click fixes all have an UNDO, and so does the purchase. Ask within 30 days of buying and I will refund you in full. You do not need a reason. Email **luniteapp@gmail.com**, say you want a refund, and tell me the email address you bought with. I aim to answer within a few days. The money goes back the way you paid, including any tax, and can take 5 to 10 business days to show on your statement. You can also ask Link, the name Stripe sells under at checkout (more below), for a refund from your receipt. Link's terms and your local consumer rights apply as well.
-
-**What a refund does to your key.** A refund ends your license. Because the app checks keys on your PC without contacting anyone, it cannot switch a refunded key off, so I am trusting you to stop using it. I would rather trust you than build a check that phones home. The same goes for sharing it with other people: I cannot stop a shared key from working, so I am asking you not to. After a refund, remove the license in the app (the license screen will have a button for it). Fixes you already applied stay applied, and UNDO keeps working.
-
-**Who you are buying from.** Lunite is made by one person, Luis, a sole proprietor in the United States, not a company. The sale itself will be made by Stripe, shown to you as Link: you will see “Sold through Link”, your receipt comes from Link, and your card statement shows a line starting with LINK.COM*. The key and support come from me. I use your email address to send your key and to answer you. I do not sell it, and the only others who handle it are Stripe (as Link, at checkout) and Google, which runs my email and keeps my sales log: your email address, the date and the purchase reference, so a key is not sent twice and a send that fails is retried while I am alerted. Once the 30 days are over, you can ask me to remove your email address from that log; Stripe and Link keep their own records, and so does the email I sent you. Your key contains your email address, so do not post it publicly. Your payment details go to Stripe's checkout, never to me or to the app.
-
-## Your rulings
-
-Any finding can be marked **"I know about this."** It stops counting against your score, stays listed, and stays watched: it comes back on its own if the evidence gets worse, and once a marked item reads clean the mark retires — so if that thing ever breaks again, you get told fresh instead of silence.
+Any finding can be marked **"I know about this."** It stops counting against your score and stays in your report. The next check-up looks at it again and brings it back if it got worse.
 
 ## Privacy
 
-**Your reports stay on your PC. Nothing is uploaded unless you press SEND on the SEND A REPORT screen in SETTINGS.** No account, no telemetry, no analytics, no automatic crash reporting. Your files, settings, hardware details and scores are not sent anywhere on their own — a report card only ever leaves this machine if you send it yourself.
-
-The app does make a small number of outbound calls, and it is worth naming all of them rather than claiming there are none. The complete list, also shown on the app's About screen:
-
-1. **The update check** — when you press CHECK FOR UPDATES on SETTINGS, or once at launch if you tick the box there. It asks the channel what the newest version is. If there is a newer one, it downloads it and checks it, then asks you before installing anything.
-2. **Name-server timing, during every check-up** — the same three names (`example.com`, `microsoft.com`, `wikipedia.org`) are asked of your own name server and of two public ones (Cloudflare and Google), to see which answers fastest. Nothing of yours is in the question.
-3. **Name-server timing again, if you press FIX** — only when a faster name server is on the plan, and on a fresh set of everyday names, because re-using the first three would hand your router a race it had just warmed its cache for.
-4. **One proof that a new name server answers** — only if you approve that change. If it can't answer, your old setting goes straight back.
-5. **The connection load test** — only when you tick its consent before a check-up. It downloads from Cloudflare's public speed test at full speed for about six to eight seconds, pings Cloudflare (1.1.1.1) about twenty times to measure how much your lag rises, and throws the data away. How much data that pulls depends on how fast your line is — roughly 1 MB for every 1 Mbps, so about 100 MB on a 100 Mbps line and close to 1 GB on gigabit.
-
-6. **The program-updates listing, during every check-up** — Windows' own package manager (winget) is asked, read-only, which of your installed programs have a newer version. To answer, winget fetches its public catalog from Microsoft. winget is Microsoft's program, not ours — depending on your Windows diagnostic-data setting, it may send Microsoft its own usage data.
-7. **About a dozen small pings to your own router, during every check-up** — to read how quickly the path to it answers. They go to your router (your PC's gateway) and no further.
-8. **Send a report** — only when you press SEND on the SEND A REPORT screen in SETTINGS. It sends your report card with this PC's name replaced by a short code (the same code each time you send from this PC), the app and Windows versions, the newest crash note if there is one, the time you sent it, and whatever you typed, to luniteapp@gmail.com. The screen lists all of it and can open the exact card for you to read before you press SEND, and nothing goes on its own.
-
-That is the complete list, and it is the same list the app shows on its About screen. The shareable report copy masks your router's addresses; crash notes mask your user folder name.
+- **Stays on your PC:** your check-ups and report cards. No account, no telemetry, no analytics, no automatic crash reporting. Lunite uploads none of them itself, but if you run it from a folder that OneDrive or a similar service syncs (a OneDrive-backed Desktop, for example), that service copies them like any other file.
+- **Sent only when you press SEND** on the SEND A REPORT screen (its PREVIEW button shows the report first). A sent report holds:
+  - your report card, with this PC's name left out and serial numbers that carry a label Lunite recognises (like Serial Number or S/N) left out. A number under another label can stay in, so press PREVIEW and read the whole report first;
+  - a short code that stands for this PC (the same code each time you send from it, so two reports from one PC can be matched);
+  - the app and Windows versions, the newest crash note if there is one, the time you sent it, and anything you typed.
+- **Where it goes:** a small Google script on Lunite's Google account saves it in that account's Google Drive and emails it to luniteapp@gmail.com. It stays there until it is deleted; nothing deletes it automatically.
+- **To have your sent reports deleted:** email luniteapp@gmail.com and quote your tag, the short code the SEND A REPORT screen shows. It is the same for every report sent from this PC, so one tag covers them all. Write it down before you remove Lunite. If you lost it, email anyway and say roughly when you sent the report.
+- **Other network calls:** the update check, name-server timing, the optional connection test, Windows' own program-update listing and pings to your own router. ABOUT in the app lists every one of them. The program-update listing asks winget, which is Microsoft's program, not ours: depending on your Windows diagnostic-data setting, it may send Microsoft its own usage data.
 
 ## Updates
 
-**CHECK FOR UPDATES** lives on the SETTINGS screen. A new build installs only after passing two gates: its SHA-256 checksum matches the published manifest, and its RSA signature verifies against the maker's key — a tampered or rehosted file cannot pass. If the swap fails, the app puts your old build back, and the old build is also kept beside the new one as a fallback.
+**CHECK FOR UPDATES** is on the SETTINGS screen. A new build installs only after you say yes and only after it passes two checks: its SHA-256 matches the published manifest, and its RSA signature verifies against the key built into the app, so a file that was changed fails these checks and is not installed. If the swap fails, the app puts your old build back.
 
-## Status
+## Removing Lunite completely
 
-Under active development. Every release lists its SHA-256 checksum. If something confused you, that's a finding — email luniteapp@gmail.com or use SETTINGS > SEND A REPORT.
+Lunite has no installer, so it has no uninstaller either.
+
+**Quick version:** undo any fix you want undone (WHAT CHANGED), press DELETE MY RECORDS in SETTINGS, close Lunite and delete `Lunite.exe`, then delete the folder `%LOCALAPPDATA%\PCOptimizer` (PCOptimizer is Lunite's older internal name). The full list below also covers the rarer leftovers: a few small files beside the app, a scheduled task, a saved DNS setting, and reports saved somewhere else.
+
+If you ever sent a report, first write down your tag from the SEND A REPORT screen (see step 9).
+
+**Full cleanup**, in order. The same steps are in the app, under ABOUT > REMOVING LUNITE COMPLETELY.
+
+1. **Undo what you want undone first.** Removing Lunite undoes nothing. Open WHAT CHANGED and press UNDO on any fix you want undone, while Lunite can still read its undo record.
+2. **Turn the no-popup switch off, if you turned it on.** In SETTINGS, press POPUP OFF ON THIS PC - CLICK TO BRING IT BACK. That deletes the scheduled task named `Lunite`. The switch only shows for a copy of Lunite installed under Program Files. If Lunite is already gone, open Task Scheduler as Administrator and delete the task named `Lunite` there.
+3. **Delete your records.** In SETTINGS, press DELETE MY RECORDS. It deletes the check-ups, report cards and other records kept next to the app, and it cannot be undone. It leaves the main undo record on this PC, so fixes you applied can still be undone, and it does not delete reports you already sent (see step 9).
+4. **Close Lunite and delete the app.** In the folder you run it from, delete the Lunite program you run (usually `Lunite.exe`) and, if an update left them beside it, the copy whose name ends in `.previous.exe` and `Lunite.update.exe`. Then delete only these files Lunite made there, if any are left:
+   - `crash-note-(date and time).txt`
+   - `update-check-on-launch.txt`
+   - `license-key.txt` (only if you were ever given a key; you don't need one)
+   - `report-card-this-pc-(date and time)-sent.html`
+   - the records named after a PC that ran Lunite from that folder (this one, if you skipped step 3, or another), each with any backup copies beside it: `scan-results-(PC name).json`, `ack-(PC name).json`, `readout-(PC name).txt`, `scan-pace-(PC name).txt`, `removals-(PC name).json`, `ledger-(PC name).json` or `ledger-(PC name)-(code).json`, and `report-card-(PC name)-(date and time).html`
+
+   Leave every other file there alone - it is not Lunite's.
+5. **Delete this PC's own Lunite folder.** It is `%LOCALAPPDATA%\PCOptimizer`, and it holds the main undo record, the board labels setting and the note that you saw the terms. Once it is gone, nothing Lunite changed can be undone from Lunite.
+6. **Remove the DNS record, only if you ever used the DNS switch.** Lunite saved the DNS it replaced under the registry key `HKLM\SOFTWARE\Lunite`. The DNS switch itself is undone in step 1 (WHAT CHANGED). If you skipped that and want your old DNS back now that Lunite is gone, set it yourself in Windows Settings: your network connection > DNS server assignment > Edit (Automatic, unless you had typed in your own servers before). Removing the key is optional and skipping it is harmless. To remove it: open Registry Editor as Administrator, go to `HKEY_LOCAL_MACHINE\SOFTWARE`, right-click the key named `Lunite` and choose Delete. Delete nothing else.
+7. **Delete copies kept elsewhere.**
+   - A report that could not be sent: on your Desktop, as `lunite-report-(code)-(date and time).html`
+   - A report preview from SEND A REPORT: in your Temp folder (`%TEMP%`), as `lunite-report-preview-(code).html`
+   - A report card that could not be saved next to the app: in `%TEMP%`, as `report-card-(...).html`
+   - If you ever said Yes to the administrator prompt: in `C:\Windows\Temp`, the folders named `lunite-run-(code)`. They hold only Lunite's own scripts, and deleting them needs administrator access.
+8. **Restore points can stay.** The one Lunite asks Windows to make before fixes stays in System Restore. Windows deletes old restore points on its own, and you can remove them yourself under System Protection.
+9. **Reports you already sent** are not on your PC, and none of the steps above touch them. To have them deleted, email luniteapp@gmail.com and quote your tag (one tag covers every report sent from this PC). If you lost it, email anyway and say roughly when you sent them.
+
+## FAQ
+
+**Does it make my games faster?**
+Lunite doesn't promise a speed-up. It finds settings and hardware that are holding your PC back, tells you what it found and how sure it is, and lets you choose what to change. Results depend on your PC.
+
+### Is it really free?
+
+Yes, today. Everything in this version is free: the check-up, the scores, the report, the written how-to steps and the one-click fixes. A later version will charge once for the app applying fixes for you. The check-up, scores, report and written steps stay free, and any PC already using Lunite before then keeps the one-click fixes free.
 
 ---
 
-© 2026 Luis. All rights reserved. The binaries may not be redistributed, modified, or rehosted without permission.
+
+**Does it need administrator access?**
+No, but it asks. On an administrator account, Windows usually shows the prompt each time Lunite starts, and you can say No. Without it, a few checks are marked "needs administrator access" instead of being guessed. On an administrator account, the report also offers a restart-with-access button if you want them.
+
+**Will it change anything on its own?**
+No. The check-up only reads. Nothing changes until you approve it on the FIX screen. Some fixes arrive ticked because your check-up found a real problem for them; untick anything you don't want. Each fix has its own UNDO.
+
+**Why does the score not count my health alert?**
+A health alert (a blue screen, a failing drive) is about your PC's health, not how well it is tuned, so it gets its own red lamp instead of being hidden inside a number. Look at those first, and if a drive is failing, back up your files before anything else.
+
+**My score changed and I didn't change anything.**
+Updates can re-grade a check. In v0.83.0 several advice-only checks stopped costing points, so a score may move at your next check-up.
+
+**Something looks wrong in my report.**
+That's worth knowing. Email luniteapp@gmail.com or use SETTINGS > SEND A REPORT, and read the report before you send it.
+
+## Terms
+
+Lunite is provided as is, without any warranty; see [LICENSE](LICENSE). Product and company names Lunite shows belong to their owners, and Lunite is not affiliated with, endorsed by or sponsored by any of them.
+
+## Security
+
+Found a security problem? Please report it privately - see [SECURITY.md](SECURITY.md).
+
+## Support
+
+Email **luniteapp@gmail.com**, or use SETTINGS > SEND A REPORT inside the app.
+
+---
+
+Free to use today. All rights reserved: the app may not be redistributed, modified or rehosted without permission (see [LICENSE](LICENSE)).
