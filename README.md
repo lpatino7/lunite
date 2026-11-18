@@ -89,8 +89,8 @@ Any finding can be marked **"I know about this."** It stops counting against you
 ## Privacy
 
 - **Stays on your PC:** your check-ups and report cards. No account, no telemetry, no analytics, no automatic crash reporting. Lunite uploads none of them itself, but if you run it from a folder that OneDrive or a similar service syncs (a OneDrive-backed Desktop, for example), that service copies them like any other file.
-- **Sent only when you press SEND** on the SEND A REPORT screen (its PREVIEW button shows the report first). A sent report holds:
-  - your report card, with this PC's name left out and serial numbers that carry a label Lunite recognises (like Serial Number or S/N) left out. A number under another label can stay in, so press PREVIEW and read the whole report first;
+- **Sent only when you press SEND** on the SEND A REPORT screen (its See the exact card link shows the report first). A sent report holds:
+  - your report card, with this PC's name left out and serial numbers that carry a label Lunite recognises (like Serial Number or S/N) left out. A number under another label can stay in, so open See the exact card and read the whole report first;
   - a short code that stands for this PC (the same code each time you send from it, so two reports from one PC can be matched);
   - the app and Windows versions, the newest crash note if there is one, the time you sent it, and anything you typed.
 - **Where it goes:** a small Google script on Lunite's Google account saves it in that account's Google Drive and emails it to luniteapp@gmail.com. It stays there until it is deleted; nothing deletes it automatically.
@@ -117,18 +117,18 @@ If you ever sent a report, first write down your tag from the SEND A REPORT scre
 4. **Close Lunite and delete the app.** In the folder you run it from, delete the Lunite program you run (usually `Lunite.exe`) and, if an update left them beside it, the copy whose name ends in `.previous.exe` and `Lunite.update.exe`. Then delete only these files Lunite made there, if any are left:
    - `crash-note-(date and time).txt`
    - `update-check-on-launch.txt`
-   - `license-key.txt` (only if you were ever given a key; you don't need one)
+   - `license-key.txt` (only if you were ever given a key)
    - `report-card-this-pc-(date and time)-sent.html`
    - the records named after a PC that ran Lunite from that folder (this one, if you skipped step 3, or another), each with any backup copies beside it: `scan-results-(PC name).json`, `ack-(PC name).json`, `readout-(PC name).txt`, `scan-pace-(PC name).txt`, `removals-(PC name).json`, `ledger-(PC name).json` or `ledger-(PC name)-(code).json`, and `report-card-(PC name)-(date and time).html`
 
    Leave every other file there alone - it is not Lunite's.
-5. **Delete this PC's own Lunite folder.** It is `%LOCALAPPDATA%\PCOptimizer`, and it holds the main undo record, the board labels setting and the note that you saw the terms. Once it is gone, nothing Lunite changed can be undone from Lunite.
-6. **Remove the DNS record, only if you ever used the DNS switch.** Lunite saved the DNS it replaced under the registry key `HKLM\SOFTWARE\Lunite`. The DNS switch itself is undone in step 1 (WHAT CHANGED). If you skipped that and want your old DNS back now that Lunite is gone, set it yourself in Windows Settings: your network connection > DNS server assignment > Edit (Automatic, unless you had typed in your own servers before). Removing the key is optional and skipping it is harmless. To remove it: open Registry Editor as Administrator, go to `HKEY_LOCAL_MACHINE\SOFTWARE`, right-click the key named `Lunite` and choose Delete. Delete nothing else.
+5. **Delete this PC's own Lunite folder.** It is `%LOCALAPPDATA%\PCOptimizer`, and it holds the main undo record, the activity log, the board labels setting and the note that you saw the terms. Once it is gone, nothing Lunite changed can be undone from Lunite.
+6. **Remove the DNS record, only if you ever used the DNS switch.** Lunite saved the DNS it replaced under the registry key `HKLM\SOFTWARE\Lunite`. The DNS switch itself is undone in step 1 (WHAT CHANGED). If you skipped that and want your old DNS back now that Lunite is gone, set it yourself in Windows Settings: your network connection > DNS server assignment (or IP assignment) > Edit (Automatic, unless you had typed in your own servers before). Removing the key is optional and skipping it is harmless. To remove it: open Registry Editor as Administrator, go to `HKEY_LOCAL_MACHINE\SOFTWARE`, right-click the key named `Lunite` and choose Delete. Delete nothing else.
 7. **Delete copies kept elsewhere.**
    - A report that could not be sent: on your Desktop, as `lunite-report-(code)-(date and time).html`
    - A report preview from SEND A REPORT: in your Temp folder (`%TEMP%`), as `lunite-report-preview-(code).html`
    - A report card that could not be saved next to the app: in `%TEMP%`, as `report-card-(...).html`
-   - If you ever said Yes to the administrator prompt: in `C:\Windows\Temp`, the folders named `lunite-run-(code)`. They hold only Lunite's own scripts, and deleting them needs administrator access.
+   - If you ever said Yes to the administrator prompt: in Windows' own Temp folder (`C:\Windows\Temp`), the folders named `lunite-run-(code)`. They hold only Lunite's own scripts, and deleting them needs administrator access.
 8. **Restore points can stay.** The one Lunite asks Windows to make before fixes stays in System Restore. Windows deletes old restore points on its own, and you can remove them yourself under System Protection.
 9. **Reports you already sent** are not on your PC, and none of the steps above touch them. To have them deleted, email luniteapp@gmail.com and quote your tag (one tag covers every report sent from this PC). If you lost it, email anyway and say roughly when you sent them.
 
