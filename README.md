@@ -26,7 +26,7 @@ Lunite is free to use today ([what will change later](#is-it-really-free)).
 
 1. Download **`Lunite.exe`** from **[Releases](https://github.com/lpatino7/lunite/releases/latest)** (under *Assets*). Save it in a folder of its own, because Lunite keeps its results and report cards beside it.
 2. Run it. The first time, Lunite shows a short version of its terms before the app opens (they stay in ABOUT, under TERMS AND NAMES). The full terms, which also cover sharing the app and how a sent report is kept, are in [LICENSE](LICENSE). By running Lunite you agree to the full LICENSE, including the parts the first-run screen leaves out.
-3. Click **RUN CHECK-UP**. The check-up is read-only: it changes no settings on your PC, and saves only its own files (results, report cards and its own working records).
+3. Click **RUN CHECK-UP**. The check-up changes no settings on your PC, and saves only its own files (results, report cards and its own working records). Two built-in Windows tools that it runs, the benchmark and the program-update listing, may keep their own logs.
 4. Changes happen only later, on the FIX screen. Every fix has its own tick box, and a fix arrives ticked only when your check-up found a real problem for it and it undoes in one tap. Untick anything you don't want.
 
 Three measurements (memory speed, drive speed, startup time) come from Windows' built-in benchmark and need administrator access. The report says when they were skipped and why, and on an administrator account it offers a restart-with-access button.
@@ -34,7 +34,7 @@ Three measurements (memory speed, drive speed, startup time) come from Windows' 
 ### The first time you run it
 
 - **Lunite is signed.** Windows shows the publisher as **Luis Patino**. To see it yourself: right-click `Lunite.exe` > Properties > Digital Signatures.
-- **Windows usually asks for administrator access each time Lunite starts,** if your Windows account is an administrator (most home PCs). The prompt should name **Luis Patino** as the verified publisher. **Yes** lets the check-up read a few more things, and the check-up still only reads. **No** still opens Lunite, and those few checks are marked "needs administrator access" instead of being guessed.
+- **Windows usually asks for administrator access each time Lunite starts,** if your Windows account is an administrator (most home PCs). The prompt should name **Luis Patino** as the verified publisher. **Yes** lets the check-up read a few more things, and it still changes no settings. **No** still opens Lunite, and those few checks are marked "needs administrator access" instead of being guessed.
 - **SmartScreen may still warn for a while.** A signed app with a new file can still get the blue "Windows protected your PC" screen until the file builds a download history with Microsoft. If you see it:
   1. Click **More info**.
   2. Check the **Publisher** line. It must say **Luis Patino**. If it says "Unknown publisher" or any other name, close the window, don't run the file, delete it, and email luniteapp@gmail.com.
@@ -93,8 +93,8 @@ Any finding can be marked **"I know about this."** It stops counting against you
   - your report card, with this PC's name left out and serial numbers that carry a label Lunite recognises (like Serial Number or S/N) left out. A number under another label can stay in, so open See the exact card and read the whole report first;
   - a short code that stands for this PC (the same code each time you send from it, so two reports from one PC can be matched);
   - the app and Windows versions, the newest crash note if there is one, the time you sent it, and anything you typed.
-- **Where it goes:** a small Google script on Lunite's Google account saves it in that account's Google Drive and emails it to luniteapp@gmail.com. It stays there until it is deleted; nothing deletes it automatically.
-- **To have your sent reports deleted:** email luniteapp@gmail.com and quote your tag, the short code the SEND A REPORT screen shows. It is the same for every report sent from this PC, so one tag covers them all. Write it down before you remove Lunite. If you lost it, email anyway and say roughly when you sent the report.
+- **Where it goes:** a small Google script on Lunite's Google account saves it in that account's Google Drive and emails it to luniteapp@gmail.com. Both copies are kept for up to a year, then deleted automatically.
+- **To have your sent reports deleted sooner:** email luniteapp@gmail.com, quote your tag (the short code the SEND A REPORT screen shows) and say roughly when you sent the report. The tag is the same for every report sent from this PC, so one tag covers them all, and the date helps, because a short code can be shared by two PCs. Write it down before you remove Lunite. If you lost it, email anyway and say roughly when you sent the report.
 - **Other network calls:** the update check, name-server timing, the optional connection test, Windows' own program-update listing and pings to your own router. ABOUT in the app lists every one of them. The program-update listing asks winget, which is Microsoft's program, not ours: depending on your Windows diagnostic-data setting, it may send Microsoft its own usage data.
 
 ## Updates
@@ -148,7 +148,7 @@ Yes, today. Everything in this version is free: the check-up, the scores, the re
 No, but it asks. On an administrator account, Windows usually shows the prompt each time Lunite starts, and you can say No. Without it, a few checks are marked "needs administrator access" instead of being guessed. On an administrator account, the report also offers a restart-with-access button if you want them.
 
 **Will it change anything on its own?**
-No. The check-up only reads. Nothing changes until you approve it on the FIX screen. Some fixes arrive ticked because your check-up found a real problem for them; untick anything you don't want. Each fix has its own UNDO.
+No. The check-up changes no settings on your PC. Settings change only when you approve a fix on the FIX screen. Some fixes arrive ticked because your check-up found a real problem for them; untick anything you don't want. Each fix has its own UNDO.
 
 **Why does the score not count my health alert?**
 A health alert (a blue screen, a failing drive) is about your PC's health, not how well it is tuned, so it gets its own red lamp instead of being hidden inside a number. Look at those first, and if a drive is failing, back up your files before anything else.
