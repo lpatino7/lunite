@@ -4,7 +4,13 @@ Questions, a confusing screen, a report that looks wrong: **luniteapp@gmail.com*
 
 **An honest PC check-up for Windows.** Lunite reads your PC's real settings and hardware, scores only what it actually verified, and says plainly what it could not read. It changes nothing without your yes, and every fix it applies has its own UNDO. Three things cannot be undone: removing a program and clearing Windows' leftover folders (both in their own room, marked permanent), and DELETE MY RECORDS in SETTINGS, which erases your saved check-ups and report cards for good but leaves the undo record, so fixes you applied can still be undone.
 
-Lunite is free to use today ([what will change later](#is-it-really-free)).
+**Price:** Lunite is free right now, one-click fixes included. Later, a paid version will cost **$9.99 USD, paid once** (not a subscription). One payment covers all your own PCs, and future updates cost nothing extra. Money back within 30 days of purchase, no reason needed, and Undo keeps working even after a refund.
+
+**Stays free, with no time limit:** the full check-up, the scores, the report, what each problem means and why it matters, the first thing to do about it, and every step that protects your files or your PC (for example, copying your files somewhere safe when a drive is failing). You never pay to undo a fix.
+
+**Will need the paid version:** the full step-by-step instructions for doing each fix yourself, and Lunite making the fixes for you, each with its own Undo.
+
+**Already have Lunite?** Any PC that has run Lunite before the paid version arrives keeps everything free, the full instructions and the fixes included. The release notes will say when the paid version is coming, before anything changes. Questions: luniteapp@gmail.com
 
 > **Certus is now Lunite.** Same app, same records, same checks. Older releases on the Releases page may carry the earlier name, Certus. Releases before v0.83.0 are not signed, so download the newest one.
 
@@ -139,7 +145,7 @@ Lunite doesn't promise a speed-up. It finds settings and hardware that are holdi
 
 ### Is it really free?
 
-Yes, today. Everything in this version is free: the check-up, the scores, the report, the written how-to steps and the one-click fixes. A later version will charge once for the app applying fixes for you. The check-up, scores, report and written steps stay free, and any PC already using Lunite before then keeps the one-click fixes free.
+Yes, right now. Everything in this version is free: the check-up, the scores, the report, the full step-by-step instructions and the one-click fixes. A later version will charge $9.99 once for the full step-by-step instructions and for Lunite making the fixes for you. The check-up, the scores, the report, what each problem means, the first thing to do, and every step that protects your files or your PC stay free. Any PC that has run Lunite before then keeps everything free.
 
 ---
 
@@ -173,4 +179,4 @@ Email **luniteapp@gmail.com**, or use SETTINGS > SEND A REPORT inside the app.
 
 ---
 
-Free to use today. All rights reserved: the app may not be redistributed, modified or rehosted without permission (see [LICENSE](LICENSE)).
+Free to use right now. All rights reserved: the app may not be redistributed, modified or rehosted without permission (see [LICENSE](LICENSE)).
